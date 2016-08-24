@@ -9,7 +9,7 @@ using System.IO;
 
 namespace GalacticFlashBot
 {
-    class IrcClient
+    public class IrcClient
     {
         private string userName;
         private string channel;
@@ -21,8 +21,7 @@ namespace GalacticFlashBot
         public IrcClient(string ip, int port, string userName, string password)
         {
             this.userName = userName;
-
-            tcpClient = new TcpClient(ip, port);
+            tcpClient = new TcpClient(ip.ToString(), port);
             inputStream = new StreamReader(tcpClient.GetStream());
             outputStream = new StreamWriter(tcpClient.GetStream());
 

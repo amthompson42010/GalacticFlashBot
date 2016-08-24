@@ -10,14 +10,35 @@ namespace GalacticFlashBot
     {
         static void Main(string[] args)
         {
-            IrcClient irc = new IrcClient("irc.twitch.tv", 6667, "galacticflashbot", "");
-            irc.joinRoom("galactic_flash");
-            while (true)
+            Info info = new Info();
+            Commands command = new Commands();
+            IrcClient irc = new IrcClient(info.IP(), info.PORT(), info.USERNAME(), info.SECRET());
+            irc.joinRoom(info.HOST());
+            while(true)
             {
                 string message = irc.readMessage();
-                if (message.Contains("!hello"))
+                foreach (string i in command.CommandsArray())
                 {
-                    irc.sendChatMessage("Hello there!");
+                    if (message.Contains(i))
+                    {
+                        switch (i)
+                        {
+                            case "!hello":
+                                Hello.hello(irc);
+                                break;
+                            case "!github":
+                                break;
+                            case "!facebook":
+                                break;
+                            case "!twitter":
+                                break;
+                            case "!social":
+                                break;
+                            case "!commands":
+                                command.twitchCommand(irc);
+                                break;
+                        }
+                    }
                 }
             }
         }
