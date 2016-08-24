@@ -11,7 +11,7 @@ namespace GalacticFlashBot
         string username = "galactic_flash";
         string ip = "irc.twitch.tv";
         int port = 6667;
-        string secret = "oauth:s0zgvlabz9v9icdqyiunw3o7650k1a";
+        string secret = "";
         string host = "galactic_flash";
 
         public string USERNAME()
